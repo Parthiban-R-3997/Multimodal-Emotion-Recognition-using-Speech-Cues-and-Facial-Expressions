@@ -6,6 +6,7 @@ seaborn
 scikit-learn
 tensorflow
 opencv-python-headless
+opencv-python
 streamlit
 streamlit-webrtc
 Flask
@@ -16,4 +17,5 @@ nltk
 av
 sounddevice
 docker
+PyAudio
 -e .
