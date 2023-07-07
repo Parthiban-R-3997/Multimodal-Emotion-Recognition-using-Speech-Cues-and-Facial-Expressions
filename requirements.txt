@@ -16,4 +16,5 @@ pyaudio
 nltk
 av
 gunicorn
+sounddevice
 -e .
