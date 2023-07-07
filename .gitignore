@@ -25,7 +25,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-artifacts/
+artifacts/test_cv/
+artifacts/train_cv/
 logs/
 
 # PyInstaller
