@@ -15,5 +15,5 @@ mediapipe
 pyaudio
 nltk
 av
-emoji
+gunicorn
 -e .

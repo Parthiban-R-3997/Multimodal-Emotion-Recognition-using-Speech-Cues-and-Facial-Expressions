@@ -26,12 +26,12 @@ def run_streamlit_app():
     st.set_page_config(
         layout="centered",
         page_title="Speech and Facial Emotion Detection",
-        page_icon="😃🎙️"
+        page_icon="😃"
         )
 
     # Set title and description with altered text size and color
-    st.markdown("<span style='font-size:40px; color:blue;'>Speech and Facial Emotion Detection</span>",unsafe_allow_html=True)
-    st.markdown("<span style='font-size:16px; color:purple;'>This web application uses speech and facial expression recognition to predict emotions.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='font-size:40px; color:blue;'>Speech Text and Facial Emotion Detection</span>",unsafe_allow_html=True)
+    st.markdown("<span style='font-size:16px; color:purple;'>This web application uses speech text and facial expression to predict emotions.</span>", unsafe_allow_html=True)
     
     # Create a column layout
     col1, col2 = st.columns(2)
