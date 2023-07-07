@@ -12,9 +12,7 @@ Flask
 cryptography
 speechrecognition
 mediapipe
-pyaudio
 nltk
 av
-gunicorn
 sounddevice
 -e .
