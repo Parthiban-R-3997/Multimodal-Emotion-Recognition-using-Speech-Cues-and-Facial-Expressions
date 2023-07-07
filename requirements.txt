@@ -1,0 +1,19 @@
+numpy
+pandas
+dataclasses
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+opencv-python
+streamlit
+streamlit-webrtc
+Flask
+cryptography
+speechrecognition
+mediapipe
+pyaudio
+nltk
+av
+emoji
+-e .
