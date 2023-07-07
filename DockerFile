@@ -1,31 +1,8 @@
-FROM nvidia/cuda:11.4.2-runtime-ubuntu20.04
-
-# Install necessary dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set up Python environment
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
-
-# Install Python and required packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3.8 \
-    python3-pip \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set up a working directory
+FROM python:3.8
+COPY . /app
 WORKDIR /app
-
-# Copy the project files to the container
-COPY . .
-
-# Install Python dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-# Expose the port
+RUN apt-get update ##[edited]
+RUN apt-get install ffmpeg libsm6 libxext6 -y
+RUN pip install -r requirements.txt
 EXPOSE $PORT
-
-# Set the entry point
 CMD ["streamlit", "run", "app.py"]
