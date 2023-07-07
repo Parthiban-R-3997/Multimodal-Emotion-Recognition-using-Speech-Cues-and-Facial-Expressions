@@ -1,8 +1,10 @@
 FROM python:3.8
 COPY . /app
 WORKDIR /app
-RUN apt-get update ##[edited]
+RUN apt-get update && install -y python3-opencv
 RUN apt-get install ffmpeg libsm6 libxext6 -y
+RUN apt-get install libgl1-mesa-glx
+RUN pip3 install opencv-python-headless==4.5.3.56
 RUN pip install -r requirements.txt
 EXPOSE $PORT
 CMD ["streamlit", "run", "app.py"]
