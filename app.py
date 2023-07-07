@@ -38,7 +38,7 @@ def run_streamlit_app():
 
     # Create a microphone button in the left column for audio processing
     with col1:
-        if st.button("Start Recording"):
+        if st.button("Start Audio Recording"):
             # Call the audio_recording_prediction function when the button is clicked
             predicted_class, predicted_probabilities, class_names, results = prediction_nlp.audio_recording_prediction()
 
