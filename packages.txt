@@ -7,4 +7,4 @@ tesseract-ocr-all
 portaudio19-dev
 libespeak1
 python3-opencv
-pyaudio
+opencv-python-headless
