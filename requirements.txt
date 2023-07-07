@@ -15,4 +15,5 @@ mediapipe
 nltk
 av
 sounddevice
+docker
 -e .
