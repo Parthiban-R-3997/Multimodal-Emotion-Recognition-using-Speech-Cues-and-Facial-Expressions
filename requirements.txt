@@ -17,5 +17,6 @@ nltk
 av
 sounddevice
 docker
-PyAudio
+pipwin
+Pyaudio
 -e .
