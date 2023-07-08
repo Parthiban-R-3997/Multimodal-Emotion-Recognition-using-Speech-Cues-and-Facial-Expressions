@@ -2,6 +2,7 @@ FROM python:3.8
 COPY . /app
 WORKDIR /app
 RUN apt-get update && install -y python3-opencv
+RUN apt-get update && apt-get install -y portaudio19-dev
 RUN apt-get install ffmpeg libsm6 libxext6 -y
 RUN apt-get update && cat packages.txt | xargs apt-get install -y
 RUN apt-get install libgl1-mesa-glx
