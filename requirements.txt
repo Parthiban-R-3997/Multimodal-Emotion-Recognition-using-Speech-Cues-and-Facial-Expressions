@@ -18,5 +18,4 @@ av
 sounddevice
 docker
 pipwin
-Pyaudio
 -e .
