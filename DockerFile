@@ -1,12 +1,28 @@
+# Use the official Python base image
 FROM python:3.8
-COPY . /app
+
+# Set environment variables
+ENV PORT=8000
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libsm6 \
+    libxext6 \
+    ffmpeg \
+    libgl1-mesa-glx \
+    portaudio19-dev
+
+# Set the working directory in the container
 WORKDIR /app
-RUN apt-get update && install -y python3-opencv
-RUN apt-get update && apt-get install -y portaudio19-dev
-RUN apt-get install ffmpeg libsm6 libxext6 -y
-RUN apt-get update && cat packages.txt | xargs apt-get install -y
-RUN apt-get install libgl1-mesa-glx
-RUN pip3 install opencv-python-headless==4.5.3.56
-RUN pip install -r requirements.txt
+
+# Copy the project files to the working directory
+COPY . /app
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the specified port
 EXPOSE $PORT
-CMD ["streamlit", "run", "app.py"]
+
+# Run the Streamlit app
+CMD ["streamlit", "run", "app.py", "--server.port=$PORT"]
