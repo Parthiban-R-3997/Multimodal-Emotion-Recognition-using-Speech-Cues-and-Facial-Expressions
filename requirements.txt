@@ -1,17 +1,12 @@
 numpy
 pandas
-dataclasses
 scikit-learn
 tensorflow
 opencv-python-headless
-opencv-python
 streamlit
 streamlit-webrtc
 speechrecognition
 mediapipe
-nltk
 av
-sounddevice
-docker
 pipwin
 -e .
