@@ -7,6 +7,4 @@ streamlit
 streamlit-webrtc
 speechrecognition
 mediapipe
-av
-pipwin
 -e .
