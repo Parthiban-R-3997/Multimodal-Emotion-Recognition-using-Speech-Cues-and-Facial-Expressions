@@ -18,4 +18,5 @@ av
 sounddevice
 docker
 pipwin
+re
 -e .
