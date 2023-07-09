@@ -8,4 +8,4 @@ streamlit-webrtc
 speechrecognition
 mediapipe
 nltk
--e .
+#-e .
