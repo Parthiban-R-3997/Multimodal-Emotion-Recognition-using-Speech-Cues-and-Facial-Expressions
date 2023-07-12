@@ -1,29 +1,19 @@
-# Use the official Python base image
 FROM python:3.8
-
-# Set the working directory in the container
+COPY . /app
 WORKDIR /app
-
-COPY requirements.txt ./requirements.txt
-
-# Install system dependencies
+ENV PYTHONPATH="$PYTHONPATH:/app"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libsm6 \
     libxext6 \
     ffmpeg \
     libgl1-mesa-glx \
-    portaudio19-dev
-
-# Install Python dependencies
+    portaudio19-dev \
+    gcc
+RUN apt-get install -y portaudio19-dev && pip install pyaudio
 RUN pip install -r requirements.txt
-
-# Expose the specified port
-EXPOSE 8501
-
-# Copy the project files to the working directory
-COPY . /app
-
-ENTRYPOINT ["streamlit", "run"]
-
-# Run the Streamlit app
-CMD ["app.py"]
+EXPOSE 80
+RUN mkdir ~/.streamlit
+RUN cp config.toml ~/.streamlit/config.toml
+RUN cp secrets.toml ~/.streamlit/secrets.toml.toml
+ENTRYPOINT [ "streamlit", "run" ]
+CMD [ "app.py" ]

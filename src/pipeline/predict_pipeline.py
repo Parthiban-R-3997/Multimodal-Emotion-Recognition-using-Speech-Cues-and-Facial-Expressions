@@ -21,9 +21,11 @@ class Prediction_NLP:
           # Set up speech recognition
           recognizer = sr.Recognizer()
 
-          
+          # Specify the device index for the desired microphone
+          device_index = 1  # Replace with the appropriate index for your microphone
+
           while True:
-                with sr.Microphone() as source:
+                with sr.Microphone(device_index=device_index) as source:
                     print("Listening...")
                     audio = recognizer.listen(source)
                 
