@@ -1,14 +1,14 @@
 FROM python:3.8
 COPY . /app
 WORKDIR /app
-ENV PYTHONPATH="$PYTHONPATH:/app"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libsm6 \
     libxext6 \
     ffmpeg \
     libgl1-mesa-glx \
     portaudio19-dev \
-    gcc
+    gcc 
+RUN apt-get install -y libasound2-dev libpulse-dev
 RUN apt-get install -y portaudio19-dev && pip install pyaudio
 RUN pip install -r requirements.txt
 EXPOSE 80
