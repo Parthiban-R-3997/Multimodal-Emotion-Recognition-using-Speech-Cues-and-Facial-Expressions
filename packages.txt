@@ -1,0 +1,9 @@
+freeglut3-dev
+libgtk2.0-dev
+libgl1-mesa-glx
+tesseract-ocr
+libtesseract-dev
+tesseract-ocr-all
+portaudio19-dev
+libespeak1
+python3-opencv
