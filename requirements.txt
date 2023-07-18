@@ -11,4 +11,5 @@ nltk
 pyaudio
 audio-recorder-streamlit
 assemblyai
+twilio
 #-e .

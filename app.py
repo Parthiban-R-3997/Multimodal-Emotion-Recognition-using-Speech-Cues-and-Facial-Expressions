@@ -1,12 +1,20 @@
 import streamlit as st
 from src.predict_pipeline import Prediction_NLP, Prediction_CV
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, WebRtcMode
+from twilio.rest import Client
 
 prediction_nlp = Prediction_NLP()
 prediction_cv = Prediction_CV()
 
-RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
+account_sid = os.environ['ACd3b01d2afa64dd275e4fa3bb8e06b92c']
+auth_token = os.environ['cf396b73e18c0423136260b48c8e5c8f']
+client = Client(account_sid, auth_token)
 
+token = client.tokens.create()
+
+#RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
+RTC_CONFIGURATION = RTCConfiguration{"iceServers": token.ice_servers}
+ 
 
 class MyVideoTransformer(VideoTransformerBase):
     def transform(self, frame):
