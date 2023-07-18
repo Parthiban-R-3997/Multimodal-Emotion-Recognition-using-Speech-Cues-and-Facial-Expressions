@@ -7,8 +7,8 @@ import os
 prediction_nlp = Prediction_NLP()
 prediction_cv = Prediction_CV()
 
-account_sid = os.environ['ACd3b01d2afa64dd275e4fa3bb8e06b92c']
-auth_token = os.environ['cf396b73e18c0423136260b48c8e5c8f']
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
 client = Client(account_sid, auth_token)
 
 token = client.tokens.create()
