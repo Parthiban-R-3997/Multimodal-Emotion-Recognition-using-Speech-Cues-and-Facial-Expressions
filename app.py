@@ -2,6 +2,7 @@ import streamlit as st
 from src.predict_pipeline import Prediction_NLP, Prediction_CV
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, WebRtcMode
 from twilio.rest import Client
+import os
 
 prediction_nlp = Prediction_NLP()
 prediction_cv = Prediction_CV()
