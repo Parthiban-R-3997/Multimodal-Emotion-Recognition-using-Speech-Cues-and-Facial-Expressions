@@ -12,4 +12,5 @@ pyaudio
 audio-recorder-streamlit
 assemblyai
 twilio
+python-dotenv
 #-e .
