@@ -144,9 +144,16 @@ class Prediction_CV:
                     # Predict the emotion
                     emotion_prediction = cv_model_load.predict(np.expand_dims(input_img, axis=0))
                     maxindex = int(np.argmax(emotion_prediction))
-                    cv2.putText(frame, emotion_dict[maxindex], (x + 5, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
-                                (58, 221, 55), 2, cv2.LINE_AA)
+                    confidence_level = emotion_prediction[maxindex]
 
+                    # Format the confidence level to display up to 6 decimal places
+                    confidence_formatted = "{:.6f}".format(confidence_level)
+
+                    # Construct the emotion label with confidence and display it on the frame
+                    emotion_label = f"{emotion_dict[maxindex]} ({confidence_formatted})"
+                    #print(emotion_label)
+                    cv2.putText(frame, emotion_label, (x + 5, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (58, 221, 55), 2, cv2.LINE_AA)
+                    #cv2.putText(frame, emotion_dict[maxindex], (x + 5, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1,(58, 221, 55), 2, cv2.LINE_AA)
             return frame
 
         except Exception as e:
