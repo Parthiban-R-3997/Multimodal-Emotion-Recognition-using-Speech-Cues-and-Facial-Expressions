@@ -12,8 +12,5 @@ RUN apt-get install -y libasound2-dev libpulse-dev
 RUN apt-get install -y portaudio19-dev && pip install pyaudio
 RUN pip install -r requirements.txt
 EXPOSE 80
-RUN mkdir ~/.streamlit
-RUN cp config.toml ~/.streamlit/config.toml
-RUN cp secrets.toml ~/.streamlit/secrets.toml.toml
 ENTRYPOINT [ "streamlit", "run" ]
 CMD [ "app.py" ]

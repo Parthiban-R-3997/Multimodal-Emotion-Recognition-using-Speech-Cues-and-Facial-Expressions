@@ -2,6 +2,9 @@ import streamlit as st
 from src.predict_pipeline import Prediction_NLP, Prediction_CV
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, WebRtcMode
 from twilio.rest import Client
+from streamlit_lottie import st_lottie
+import requests
+import json
 import os
 from dotenv import load_dotenv
 
@@ -29,8 +32,24 @@ class MyVideoTransformer(VideoTransformerBase):
         processed_frame = prediction_cv.image_prediction(img)
         return processed_frame
 
+## Setting up animation
+def load_mic(path:str):
+    with open(path, 'r') as p:
+          return json.load(p)
+    
+load_mic=load_mic("./mic.json")    
+
+
+def load_face(path:str):
+    with open(path, 'r') as p:
+          return json.load(p)
+    
+load_face=load_face("./emotion.json")    
+
+
+
 # Set page config to a clean and minimal style with wide layout
-    st.set_page_config(
+st.set_page_config(
         layout="wide",
         page_title="Multimodal Speech and Facial Emotion Detection",
         page_icon="😃"
@@ -56,30 +75,63 @@ def run_streamlit_app():
             st.markdown(
                 """
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <h1 style="font-size: 30px; color: blue; text-align: center;">Multimodal emotion recognition using Audio Text 🎙️ and Facial image 😃</h1>
+                    <h1 style="font-size: 30px; color: blue; text-align: center;">Multimodal emotion recognition using Speech cues 🎙️ and Facial Expressions 😃</h1>
                 </div>
                 """,unsafe_allow_html=True
             )
+            # Adding gaps 
+            st.write("")
+            st.write("")
             
             html_temp_home1 = """<div style="background-color:#e85530;padding:10px">
                                                 <h5 style="color:white;text-align:center;">
-                                                This web application uses speech text and facial expression to predict emotions.</h5>
+                                                This web application uses speech cues from which it transcribes text and also uses facial expressions to predict emotions.</h5>
                                                 </div>
                                                 </br>"""
             st.markdown(html_temp_home1, unsafe_allow_html=True)
-
+            
+            # Adding gaps 
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
             
 
-            st.write("""
-                    The application has two functionalities.
+            st.markdown("""
+            <p style='font-size: 30px; line-height: 1.4; font-weight: bold; color: #eb4034;text-align: center;'>
+            The application has two functionalities
+            </p>""", unsafe_allow_html=True)
 
-                    1. Detects text from audio and predicts emotions using Bi-LSTM.
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
 
-                    2. Detects real time facial emotion recognization using Mediapipe and OpenCV.
-
-                        """)
             
+            col1, col2 = st.columns(2)
+            with col1:
+             st_lottie(load_mic)
+             st.write("")
+             st.write("")
+             st.markdown("""
+                <ul style='font-size: 25px; line-height: 1.2;font-weight: bold; color: #7611fa;'>
+                    Detects text from speech cues and predicts emotions using Bi-LSTM 
+                </ul>""", unsafe_allow_html=True)
+            with col2:
+             st_lottie(load_face)
+             st.write("")
+             st.write("")
+             st.markdown("""
+                <ul style='font-size: 25px; line-height: 1.2;font-weight: bold; color: #eb0250;'>
+                    Detects real-time facial emotion recognition using Mediapipe and OpenCV 
+                </ul>""", unsafe_allow_html=True)
 
+        
 
     elif choice == "Working Activity":  
 

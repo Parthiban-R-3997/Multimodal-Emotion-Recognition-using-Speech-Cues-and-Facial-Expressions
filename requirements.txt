@@ -13,4 +13,7 @@ audio-recorder-streamlit
 assemblyai
 twilio
 python-dotenv
+streamlit-lottie
+path
+requests
 #-e .

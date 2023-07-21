@@ -1,0 +1,21 @@
+[server]
+port = 80
+
+[browser]
+serverPort = 80
+
+
+[theme]
+primaryColor="#8533ff"
+backgroundColor="#80ffcc"
+secondaryBackgroundColor="#F0F2F6"
+
+
+
+
+
+
+
+
+
+

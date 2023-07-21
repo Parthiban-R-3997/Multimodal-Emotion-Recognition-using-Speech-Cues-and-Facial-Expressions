@@ -43,7 +43,7 @@ class Prediction_NLP:
             # Transcribe the audio file
             transcript = self.transcriber.transcribe(audio_file)
             transcribed_text = transcript.text
-            st.write(transcribed_text)
+            st.markdown(f"<span style='font-weight: bold; color: #3333cc;'>Transcribed Text: </span>{transcribed_text}", unsafe_allow_html=True)
 
             # Perform emotion prediction only if recognized_text is not empty
             if transcribed_text:
@@ -63,7 +63,7 @@ class Prediction_NLP:
                     prediction = nlp_model_load.predict(preprocessed_texts)
                     predicted_class_index = prediction.argmax(axis=1)[0]
                     predicted_class_name = class_names[predicted_class_index]
-                    st.write(f"Predicted sentiment: {predicted_class_name}")
+                    st.markdown(f"<span style='font-weight: bold; color:#ff3300;'>Predicted sentiment: </span>{predicted_class_name}", unsafe_allow_html=True)
                     predicted_probabilities = prediction[0]
                     
                     
@@ -84,7 +84,9 @@ class Prediction_NLP:
                 except Exception as e:
                     st.error("Error occurred during emotion prediction:")
                     st.error(e)
-          
+
+
+
 class Prediction_CV:
    
     def image_prediction(self, frame):
@@ -143,17 +145,13 @@ class Prediction_CV:
 
                     # Predict the emotion
                     emotion_prediction = cv_model_load.predict(np.expand_dims(input_img, axis=0))
+                    print(emotion_prediction)
                     maxindex = int(np.argmax(emotion_prediction))
-                    confidence_level = emotion_prediction[maxindex]
-
-                    # Format the confidence level to display up to 6 decimal places
-                    confidence_formatted = "{:.6f}".format(confidence_level)
-
-                    # Construct the emotion label with confidence and display it on the frame
-                    emotion_label = f"{emotion_dict[maxindex]} ({confidence_formatted})"
-                    #print(emotion_label)
-                    cv2.putText(frame, emotion_label, (x + 5, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (58, 221, 55), 2, cv2.LINE_AA)
-                    #cv2.putText(frame, emotion_dict[maxindex], (x + 5, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1,(58, 221, 55), 2, cv2.LINE_AA)
+                    emotion_label = emotion_dict[maxindex]
+                    confidence_level = emotion_prediction[0][maxindex]
+                    confidence_formatted = "{:.3f}".format(confidence_level)
+                    text = f"{emotion_label} ({confidence_formatted})"
+                    cv2.putText(frame, text, (x + 5, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (58, 221, 55), 2, cv2.LINE_AA)                          
             return frame
 
         except Exception as e:
