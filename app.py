@@ -57,7 +57,7 @@ st.set_page_config(
 
 
 def run_streamlit_app():
-    activity = ["Home", "Working Activity"]
+    activity = ["Home", "Working"]
     choice = st.sidebar.selectbox("Select Activity", activity)
     st.sidebar.markdown(
     """
@@ -133,7 +133,7 @@ def run_streamlit_app():
 
         
 
-    elif choice == "Working Activity":  
+    elif choice == "Working":  
 
                 # Set title and description with altered text size and color
                 st.markdown(
@@ -159,10 +159,18 @@ def run_streamlit_app():
 
                 # Create a microphone button in the left column for audio processing
                 with col1:
+                    st.write("")
+                    st.write("")
+                    st.write("")
+                    st.write("")
                     prediction_nlp.AudioRecorderApp()
 
                 # Create a camera button in the right column for video processing
                 with col2:
+                    st.write("")
+                    st.write("")
+                    st.write("")
+                    st.write("")
                     st.markdown("<h5 style='text-align: center; color: green; font-size: 20px;'>Start Video Capture 📸</h5>", unsafe_allow_html=True)
                     # Start the video stream capture
                     webrtc_streamer(
