@@ -1,6 +1,6 @@
 # Multimodal Emotion Recognition System
 
-Recognizing and understanding emotions is crucial in human-computer interaction, as it can greatly enhance decision making and judgment. This project proposes a comprehensive emotion recognition system that focuses on analyzing candidates' expressions during behavioral interviews.
+Recognizing and understanding emotions is crucial in human-computer interaction, as it can greatly enhance decision-making and judgment. This project proposes a comprehensive emotion recognition system that focuses on analyzing candidates' expressions during behavioral interviews.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -23,8 +23,14 @@ The Multimodal Emotion Recognition System aims to enhance the hiring process by 
 - Capture candidate facial images and speech cues.
 - The system will analyze emotions and provide real-time insights.
 
+
+
 ## Technologies Used
 - Streamlit
 - Docker
 - CI/CD Pipeline
 - Microsoft Azure
+
+
+  ## Application can be accessed via
+- https://multimodal-emotion-detection.azurewebsites.net/
